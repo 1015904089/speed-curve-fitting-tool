@@ -18,6 +18,8 @@ qt_add_executable(speed_curve_fitting_tool
     src/curvecanvas.h
     src/sliderpanel.cpp
     src/sliderpanel.h
+    src/motionslider.cpp
+    src/motionslider.h
     src/resultpanel.cpp
     src/resultpanel.h
     src/skinprovider.cpp

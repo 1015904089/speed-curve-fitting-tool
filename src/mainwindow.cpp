@@ -38,6 +38,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_sliderPanel, &SliderPanel::recordingStateChanged, this, [this](bool recording) {
         statusBar()->showMessage(recording ? tr("Recording slider draft...") : tr("Slider recording stopped"));
     });
+    connect(m_sliderPanel, &SliderPanel::limitsChanged, m_curveCanvas, &CurveCanvas::setSceneLimits);
+    connect(m_sliderPanel, &SliderPanel::previewChanged, m_curveCanvas, &CurveCanvas::setSliderPreview);
+    connect(m_curveCanvas, &CurveCanvas::resetRequested, this, &MainWindow::resetWorkspace);
+    connect(m_sliderPanel, &SliderPanel::resetRequested, this, &MainWindow::resetWorkspace);
 
     auto *resetShortcut = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_0), this);
     connect(resetShortcut, &QShortcut::activated, this, &MainWindow::restoreDefaultLayout);
@@ -86,4 +90,11 @@ void MainWindow::restoreDefaultLayout()
     m_mainSplitter->setSizes({900, 380});
     m_leftSplitter->setSizes({490, 270});
     statusBar()->showMessage(tr("Default layout restored"));
+}
+
+void MainWindow::resetWorkspace()
+{
+    m_sliderPanel->resetPanel();
+    m_curveCanvas->resetCanvas();
+    statusBar()->showMessage(tr("Workspace reset"));
 }

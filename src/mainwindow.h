@@ -22,6 +22,7 @@ private:
     void restoreLayout();
     void saveLayout() const;
     void restoreDefaultLayout();
+    void resetWorkspace();
 
     RestorableSplitter *m_mainSplitter = nullptr;
     RestorableSplitter *m_leftSplitter = nullptr;
