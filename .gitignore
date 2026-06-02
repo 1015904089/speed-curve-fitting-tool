@@ -14,3 +14,4 @@ CMakeUserPresets.json
 __pycache__/
 .pytest_cache/
 fit_worker_output/
+curve_fitting_tool_guideline.zip
