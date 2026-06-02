@@ -1,0 +1,16 @@
+build/
+out/
+*.user
+*.pro.user
+CMakeUserPresets.json
+.vs/
+.vscode/
+*.obj
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.log
+__pycache__/
+.pytest_cache/
+fit_worker_output/
